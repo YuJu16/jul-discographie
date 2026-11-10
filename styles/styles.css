@@ -1,0 +1,33 @@
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+}
+
+.sidebar {
+  position: fixed; top: 0; left: 0;
+  width: 260px; height: 100vh;
+  padding: 24px 20px;
+  border-right: 2px solid black;
+  background: hotpink;
+}
+
+.main {
+  margin-left: 260px;
+}
+
+.bigHeader {
+  height: 510px;
+  margin: 0;
+  background: mediumpurple;
+   }
+
+.horizon {height: 200px;
+  border-top: 2px solid black;
+  background: orange;
+}
+.content {
+  min-height: 1080px;
+  padding: 40px 40px 72px;
+  background: khaki;
+} 

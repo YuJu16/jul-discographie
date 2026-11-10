@@ -20,6 +20,9 @@ func accueil(reponse http.ResponseWriter, demande *http.Request) {
 }
 
 func main() {
+	// Sert les fichiers statiques (CSS) depuis le dossier styles/
+	http.Handle("/styles/", http.StripPrefix("/styles/", http.FileServer(http.Dir("styles"))))
+
 	// Route principale "/" reliée à la fonction accueil
 	http.HandleFunc("/", accueil)
 	fmt.Println("Serveur lancé sur http://localhost:8080")
