@@ -3,14 +3,37 @@
   <head>
     <meta charset="utf-8">
     <title>Accueil</title>
-    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="/styles/styles.css">
   </head>
   <body>
-  <aside class="sidebar"></aside>
-  <main class="main">
-    <section class="bigHeader"></section>
-    <div class="horizon"></div>
-    <section class="content"></section>
-  </main>
-</body>
+    <aside class="sidebar">
+      <div class="sidebar-title"></div>
+      <div class="sidebar-filters"></div>
+    </aside>
+
+    <main class="main">
+      <section class="bigHeader">
+        <div class="bigHeader-header"></div>
+        <div class="bigHeader-content">
+          <h1 class="bigHeader-title">Discographie de Jul</h1>
+          <div class="bigHeader-actions"></div>
+        </div>
+      </section>
+
+      <div class="horizon"></div>
+
+      <section class="content">
+        <h2 class="content-title">Albums</h2>
+        <ul class="grid">
+          <li>
+            <article class="card">
+              <div class="cover"></div>
+              <div class="card-info"></div>
+              <a class="btn" href="#">Voir le détail</a>
+            </article>
+          </li>
+        </ul>
+      </section>
+    </main>
+  </body>
 </html>

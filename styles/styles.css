@@ -12,22 +12,98 @@ body {
   background: hotpink;
 }
 
-.main {
+.sidebar-title { /* titre Jul discographie */
+  height: 90px;  
+  background: #cff77a;
+}
+
+.sidebar-filters { /* filtre de la sidebar*/
+  height: 360px; 
+  margin-top: 24px; 
+  background: white; 
+}
+
+.main { /* zone principale */
   margin-left: 260px;
 }
 
-.bigHeader {
+.bigHeader { /* zone du "header" */
   height: 510px;
   margin: 0;
-  background: mediumpurple;
-   }
+  padding-top: 1px; /* évite le margin-collapse avec .bigHeader-header */
+  background: #5b3fa0;
+}
 
-.horizon {height: 200px;
+.bigHeader-header {  /* zone tout en haut du header */
+  height: 40px; 
+  margin: 16px 40px; 
+  background: #17382b; 
+}
+
+.bigHeader-content{ /* zone du contenu du header : JUL EN BIIIG */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+}
+
+.bigHeader-title   { /* zone du titre du header : JUL EN BIIIG */
+  width: 400px; 
+  height: 160px; 
+  background: #c6dbfb; 
+}
+
+bigHeader-actions { /* zone du bouton du header : BOUTON */
+  width: 400px;
+  height: 50px;
+  background: #f5c6e8;
+}
+
+
+.horizon {height: 200px; /* zone de la ligne horizontale avce l'animation stylée*/
   border-top: 2px solid black;
   background: orange;
 }
-.content {
+
+.content { /* zone du contenu principal */
   min-height: 1080px;
   padding: 40px 40px 72px;
   background: khaki;
-} 
+}
+
+.content-title { 
+  height: 36px; 
+  background: #cbd0d8; 
+  margin-bottom: 28px; 
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  list-style: none;
+  padding: 0; margin: 0;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  background: #8adfe6;
+}
+
+.cover { /* zone de l'image de la cover */
+  aspect-ratio: 1 / 1;
+  background: #3b2706;
+}
+
+.card-info {
+  height: 110px;
+   margin: 16px 0;
+    background: #b9fb4f;
+  }
+
+.card .btn {
+  height: 36px;
+  background: #5b1fe0;
+ }
