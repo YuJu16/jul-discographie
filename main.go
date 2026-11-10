@@ -22,6 +22,10 @@ func accueil(reponse http.ResponseWriter, demande *http.Request) {
 func main() {
 	// Sert les fichiers statiques (CSS) depuis le dossier styles/
 	http.Handle("/styles/", http.StripPrefix("/styles/", http.FileServer(http.Dir("styles"))))
+	//petit explication pour comprendre la ligne au dessus :
+	// http.Handle("/styles/", ...) : définit une route pour servir les fichiers statiques
+	// http.StripPrefix("/styles/", ...) : retire le préfixe "/styles/" de l'URL avant de servir le fichier
+	// http.FileServer(http.Dir("styles")) : crée un serveur de fichiers pour le dossier "styles"
 
 	// Route principale "/" reliée à la fonction accueil
 	http.HandleFunc("/", accueil)

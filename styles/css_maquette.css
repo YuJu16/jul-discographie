@@ -1,0 +1,829 @@
+/* ==========================================================================
+   JUL • Discographie : feuille de style unique
+   DA rétro « jeu vidéo » : pixel art, rose néon sur fond prune,
+   ciel étoilé, grille en perspective à l'horizon, scanlines d'écran CRT.
+   Aucun JavaScript : interactions en CSS (hover, focus, transitions).
+
+   Sommaire
+     1. Variables            7. Bannière et horizon
+     2. Base + ciel étoilé   8. Grille et cartes
+     3. Effet écran (CRT)    9. Badges et état vide
+     4. Typo pixel           10. Page détail
+     5. Layout et sidebar    11. Pages d'erreur
+     6. Boutons pixel        12. Mobile et accessibilité
+   ========================================================================== */
+
+
+/* 1. VARIABLES ---------------------------------------------------------------
+   Une seule famille de couleurs : le rose, du plus clair au plus sombre. */
+:root {
+  --bg: #241419;             /* fond principal : prune très sombre */
+  --bg-deep: #170C11;        /* encore plus sombre : champs, ombres dures */
+  --surface: #2F1B24;        /* cartes, sidebar */
+  --surface-hover: #3C2230;  /* surfaces au survol */
+
+  --pink: #F29BD0;           /* couleur principale : rose néon */
+  --pink-light: #FFD1EC;     /* reflets, gros titres */
+  --pink-dark: #A8487F;      /* épaisseur des titres, bordures */
+  --pink-deep: #6E2A52;      /* ombres dures « pixel » */
+
+  --text: #FBE3F1;
+  --text-muted: #C48FAE;
+
+  --glow: rgba(242, 155, 208, 0.45);        /* lueur néon */
+  --glow-soft: rgba(242, 155, 208, 0.18);
+
+  --sidebar-w: 260px;
+  --font-pixel: "Press Start 2P", ui-monospace, monospace;   /* titres */
+  --font-ui: "VT323", ui-monospace, monospace;               /* texte */
+}
+
+
+/* 2. BASE + CIEL ÉTOILÉ ----------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  font-family: var(--font-ui);
+  font-size: 20px;             /* VT323 est petite : 20px ≈ 15px d'une police classique */
+  line-height: 1.25;
+  background-color: var(--bg);
+  /* Ciel étoilé : chaque radial-gradient est une étoile ;
+     le motif de 320 × 260 px se répète sur toute la page. */
+  background-image:
+    radial-gradient(1.5px 1.5px at 30px 40px, var(--pink-light), transparent),
+    radial-gradient(1.5px 1.5px at 150px 110px, var(--text), transparent),
+    radial-gradient(2px 2px at 240px 190px, var(--pink), transparent),
+    radial-gradient(1.5px 1.5px at 90px 220px, var(--pink-light), transparent),
+    radial-gradient(1px 1px at 290px 50px, var(--text), transparent);
+  background-size: 320px 260px;
+}
+
+h1, h2, h3, p, dl, dd, ul {
+  margin: 0;                   /* on retire les marges par défaut du navigateur */
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Focus clavier : contour rose en pointillés, façon curseur de menu */
+:focus-visible {
+  outline: 2px dashed var(--pink-light);
+  outline-offset: 3px;
+}
+
+
+/* 3. EFFET ÉCRAN (CRT) -------------------------------------------------------
+   Un calque fixe posé sur toute la page :
+   - fines lignes horizontales (scanlines) ;
+   - bords assombris (vignette).
+   pointer-events: none laisse passer les clics au travers. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.16) 0 1px, transparent 1px 3px),
+    radial-gradient(ellipse at center, transparent 60%, rgba(0, 0, 0, 0.45) 100%);
+}
+
+
+/* 4. TYPO PIXEL --------------------------------------------------------------
+   Titre « en relief » : plusieurs ombres décalées vers le bas, sans flou,
+   empilées du clair au sombre, puis une lueur floue pour le néon. */
+.pixel-title {
+  font-family: var(--font-pixel);
+  font-weight: 400;            /* la police pixel n'a qu'une graisse */
+  line-height: 1.1;
+  color: var(--pink-light);
+  text-shadow:
+    0 2px 0 var(--pink),
+    0 4px 0 var(--pink-dark),
+    0 6px 0 var(--pink-dark),
+    0 8px 0 var(--pink-deep),
+    0 0 28px var(--glow);
+}
+
+/* Variante plus fine pour les titres moyens */
+.pixel-title--sm {
+  text-shadow:
+    0 2px 0 var(--pink-dark),
+    0 4px 0 var(--pink-deep),
+    0 0 18px var(--glow);
+}
+
+/* Petit titre de rubrique encadré d'étoiles : ✦ TITRES ✦ */
+.kicker {
+  font-family: var(--font-pixel);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--pink-light);
+  text-shadow: 0 2px 0 var(--pink-deep);
+}
+
+/* Étincelles ✦ ✦ ✦ */
+.sparkles {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+  color: var(--pink);
+  font-size: 34px;
+  line-height: 1;
+  text-shadow: 0 0 12px var(--glow);
+}
+
+.sparkles span:nth-child(2) {
+  font-size: 48px;             /* l'étoile du milieu est plus grande */
+}
+
+/* Petit cœur pixel (SVG en carrés) */
+.heart {
+  width: 21px;
+  height: 18px;
+  fill: var(--pink);
+  shape-rendering: crispEdges; /* bords nets, pas d'anticrénelage : effet pixel */
+}
+
+
+/* 5. LAYOUT ET SIDEBAR ------------------------------------------------------ */
+.main {
+  margin-left: var(--sidebar-w);   /* laisse la place à la sidebar fixe */
+  min-height: 100vh;
+}
+
+.sidebar {
+  position: fixed;             /* reste en place quand la page défile */
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: var(--sidebar-w);
+  height: 100vh;
+  padding: 24px 20px;
+  overflow-y: auto;
+  background: rgba(23, 12, 17, 0.88);   /* --bg-deep légèrement transparent : on devine les étoiles */
+  border-right: 2px solid var(--pink-deep);
+}
+
+.brand {
+  display: block;
+  margin-bottom: 32px;
+}
+
+.brand__name {
+  display: block;
+  font-family: var(--font-pixel);
+  font-size: 22px;
+  color: var(--pink-light);
+  text-shadow: 0 3px 0 var(--pink-dark);
+}
+
+.brand__sub {
+  display: block;
+  margin-top: 6px;
+  color: var(--text-muted);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* <summary> = bouton replier/déplier ; utile seulement sur mobile */
+.sidebar__toggle {
+  display: none;
+}
+
+.sidebar .kicker {
+  display: block;
+  margin-bottom: 18px;
+}
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.field label {
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.field select {
+  width: 100%;
+  padding: 6px 10px;
+  border: 2px solid var(--pink-deep);
+  border-radius: 0;            /* pixel : angles droits */
+  background: var(--bg-deep);
+  color: var(--text);
+  font-family: var(--font-ui);
+  font-size: 20px;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.field select:hover,
+.field select:focus {
+  border-color: var(--pink);
+}
+
+.filters__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+/* Lien discret « Réinitialiser » */
+.link-muted {
+  color: var(--text-muted);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  transition: color 0.15s;
+}
+
+.link-muted:hover {
+  color: var(--pink-light);
+}
+
+.back-link {
+  color: var(--pink);
+  font-size: 22px;
+  text-transform: uppercase;
+  transition: color 0.15s;
+}
+
+.back-link:hover {
+  color: var(--pink-light);
+}
+
+
+/* 6. BOUTONS PIXEL -----------------------------------------------------------
+   Rectangle sans arrondi + deux ombres sans flou :
+   - inset (intérieure) en bas à droite : le relief du bouton ;
+   - extérieure décalée : l'ombre portée « pixel ».
+   Au clic (:active), le bouton s'enfonce. */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 6px 20px;
+  border: 2px solid var(--pink-light);
+  border-radius: 0;
+  background: var(--pink);
+  color: var(--bg-deep);
+  font-family: var(--font-ui);
+  font-size: 22px;
+  letter-spacing: 0.06em;
+  text-align: center;          /* si le texte passe sur 2 lignes, il reste centré */
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: inset -3px -3px 0 var(--pink-dark), 4px 4px 0 var(--pink-deep);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: inset -3px -3px 0 var(--pink-dark), 6px 6px 0 var(--pink-deep), 0 0 18px var(--glow);
+}
+
+.btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: inset 3px 3px 0 var(--pink-dark);
+}
+
+/* Variante secondaire : fond sombre, texte et bordure roses */
+.btn--ghost {
+  background: var(--surface);
+  color: var(--pink-light);
+  border-color: var(--pink);
+  box-shadow: 4px 4px 0 var(--pink-deep);
+}
+
+.btn--ghost:hover {
+  background: var(--surface-hover);
+  box-shadow: 6px 6px 0 var(--pink-deep), 0 0 18px var(--glow);
+}
+
+.btn--ghost:active {
+  box-shadow: none;
+}
+
+.btn--small {
+  padding: 4px 14px;
+  font-size: 20px;
+}
+
+.btn svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+  shape-rendering: crispEdges;
+}
+
+
+/* 7. BANNIÈRE ET HORIZON ---------------------------------------------------- */
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 20px;           /* pas de marge sur les côtés : l'horizon va d'un bord à l'autre */
+}
+
+.hero .hud {
+  padding: 0 40px;
+}
+
+/* HUD : la petite barre d'infos en haut, comme dans un jeu */
+.hud {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+  color: var(--text-muted);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hud__left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;         /* le texte du HUD reste sur une ligne */
+}
+
+/* Pile : un cadre + un remplissage à 70 % + un petit téton à droite */
+.battery {
+  position: relative;
+  width: 34px;
+  height: 18px;
+  padding: 2px;
+  border: 2px solid var(--pink);
+}
+
+.battery::before {
+  content: "";
+  display: block;
+  width: 70%;
+  height: 100%;
+  background: var(--pink);
+}
+
+.battery::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  right: -6px;
+  width: 4px;
+  height: 8px;
+  background: var(--pink);
+}
+
+.hero__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  padding: 56px 0 40px;
+}
+
+.hero h1 {
+  font-size: clamp(4rem, 11vw, 8.5rem);
+  letter-spacing: 0.04em;
+}
+
+.hero__count {
+  color: var(--text-muted);
+  font-size: 24px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+}
+
+/* Horizon : une grille de lignes roses, couchée au sol grâce à la perspective.
+   1. Le ::before dessine la grille (deux dégradés répétés = lignes horizontales + verticales).
+   2. perspective + rotateX la basculent vers l'arrière, comme un sol.
+   3. Une animation décale la grille d'une case : elle semble avancer vers nous.
+   4. Le ::after ajoute une brume qui fait disparaître le haut de la grille. */
+.horizon {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;            /* coupe ce qui dépasse de la grille */
+  border-top: 2px solid var(--pink);
+  box-shadow: 0 -10px 30px var(--glow-soft);
+}
+
+.horizon::before {
+  content: "";
+  position: absolute;
+  left: -50%;
+  width: 200%;                 /* plus large que l'écran : la perspective la rétrécit au loin */
+  top: 0;
+  height: 100%;
+  background-image:
+    linear-gradient(var(--pink) 2px, transparent 2px),
+    linear-gradient(90deg, var(--pink) 2px, transparent 2px);
+  background-size: 64px 32px;
+  transform: perspective(200px) rotateX(55deg);
+  transform-origin: top center;
+  opacity: 0.75;
+  animation: grid-move 1.5s linear infinite;
+}
+
+.horizon::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, var(--bg) 0%, transparent 60%);
+}
+
+@keyframes grid-move {
+  from { background-position: 0 0; }
+  to   { background-position: 0 32px; }   /* exactement une case : la boucle ne se voit pas */
+}
+
+.content {
+  padding: 40px 40px 72px;
+}
+
+.section-title {
+  display: block;
+  margin-bottom: 28px;
+  font-size: 14px;
+}
+
+
+/* 8. GRILLE ET CARTES ------------------------------------------------------- */
+.grid {
+  display: grid;
+  /* Autant de colonnes que possible, chacune d'au moins 200px */
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 24px;
+}
+
+.grid > li {
+  min-width: 0;                /* permet au titre d'être tronqué dans la colonne */
+}
+
+/* Carte = « cartouche » : bordure pixel + ombre dure décalée */
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 12px;
+  border: 2px solid var(--pink-deep);
+  background: var(--surface);
+  box-shadow: 4px 4px 0 var(--bg-deep);
+  transition: transform 0.2s, background 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+/* Survol (ou focus clavier dans la carte) : la carte se soulève et s'allume */
+.card:hover,
+.card:focus-within {
+  transform: translate(-3px, -3px);
+  background: var(--surface-hover);
+  border-color: var(--pink);
+  box-shadow: 7px 7px 0 var(--pink-deep), 0 0 26px var(--glow);
+}
+
+/* Couverture carrée.
+   En vrai : <img class="cover" src="{{.CoverURL}}" alt="…">
+   Les variantes --1 à --4 ne servent qu'à la maquette (pas d'images). */
+.cover {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;         /* toujours carré */
+  object-fit: cover;           /* l'image remplit le carré sans se déformer */
+  border: 2px solid var(--pink-deep);
+  background-color: var(--bg-deep);
+}
+
+/* --1 : soleil rétro rayé (bandes sombres par-dessus un disque rose) */
+.cover--1 {
+  background:
+    repeating-linear-gradient(180deg, transparent 0 10px, var(--bg-deep) 10px 13px),
+    radial-gradient(circle at 50% 62%, var(--pink-light) 0, var(--pink) 22%, var(--pink-dark) 34%, transparent 35%),
+    var(--bg-deep);
+}
+
+/* --2 : quadrillage rose */
+.cover--2 {
+  background:
+    linear-gradient(var(--pink-dark) 2px, transparent 2px) 0 0 / 100% 20%,
+    linear-gradient(90deg, var(--pink-dark) 2px, transparent 2px) 0 0 / 20% 100%,
+    var(--bg-deep);
+}
+
+/* --3 : dégradé diagonal rose vers prune */
+.cover--3 {
+  background: linear-gradient(135deg, var(--pink-light), var(--pink) 40%, var(--pink-deep));
+}
+
+/* --4 : damier */
+.cover--4 {
+  background: repeating-conic-gradient(var(--pink-dark) 0 25%, var(--bg-deep) 0 50%) 0 0 / 25% 25%;
+}
+
+.card__title {
+  margin-top: 12px;
+  font-family: var(--font-ui);
+  font-size: 26px;
+  font-weight: 400;
+  color: var(--pink-light);
+  /* Tronqué sur une seule ligne, terminé par « … » */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card__artists {
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card__meta {
+  margin-top: 4px;
+  color: var(--text-muted);
+  font-size: 18px;
+}
+
+.card__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 10px 0 16px;
+}
+
+/* margin-top: auto pousse le bouton en bas : tous les boutons sont alignés */
+.card .btn {
+  margin-top: auto;
+}
+
+
+/* 9. BADGES ET ÉTAT VIDE ---------------------------------------------------- */
+.badge {
+  padding: 0 8px;
+  font-size: 18px;
+  letter-spacing: 0.1em;
+  line-height: 1.3;
+}
+
+/* FEAT : rose plein */
+.badge--feat {
+  background: var(--pink);
+  color: var(--bg-deep);
+}
+
+/* SINGLE / ALBUM : simple contour */
+.badge--type {
+  border: 2px solid var(--pink-light);
+  color: var(--pink-light);
+  line-height: 1.1;
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding: 64px 24px;
+  border: 2px dashed var(--pink-deep);
+  text-align: center;
+}
+
+.empty__text {
+  font-size: 26px;
+  color: var(--pink-light);
+}
+
+
+/* 10. PAGE DÉTAIL ----------------------------------------------------------- */
+.detail-page .main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;   /* l'horizon reste collé en bas */
+}
+
+.detail {
+  display: flex;
+  flex-wrap: wrap;             /* passe sous la couverture si l'écran est étroit */
+  align-items: center;
+  gap: 56px;
+  padding: 72px 40px 48px;
+}
+
+.detail__cover {
+  width: 320px;
+  max-width: 100%;
+  border: 2px solid var(--pink);
+  /* Ombre pixel + double lueur néon */
+  box-shadow: 8px 8px 0 var(--pink-deep), 0 0 40px var(--glow), 0 0 90px var(--glow-soft);
+}
+
+.detail__info {
+  flex: 1;
+  min-width: 280px;
+}
+
+.detail__info h1 {
+  margin: 20px 0 32px;
+  font-size: clamp(1.75rem, 4vw, 3rem);
+}
+
+/* Liste de définitions : libellé (dt) à gauche, valeur (dd) à droite */
+.detail__meta {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 6px 24px;
+  margin-bottom: 36px;
+  font-size: 22px;
+}
+
+.detail__meta dt {
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.detail__meta dd {
+  color: var(--pink-light);
+}
+
+.btn--play {
+  padding: 10px 28px;
+  font-size: 26px;
+}
+
+
+/* 11. PAGES D'ERREUR -------------------------------------------------------- */
+.error {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  text-align: center;
+}
+
+.error .hud {
+  padding: 20px 32px 0;
+}
+
+.error__inner {
+  flex: 1;                     /* prend toute la hauteur libre : le contenu est centré */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  padding: 40px 20px;
+}
+
+.error__code {
+  font-size: clamp(5rem, 16vw, 9rem);
+}
+
+.error h1 {
+  font-size: clamp(1rem, 3vw, 1.5rem);
+}
+
+.error__text {
+  max-width: 460px;
+  color: var(--text-muted);
+  font-size: 24px;
+}
+
+
+/* 12. MOBILE ET ACCESSIBILITÉ ----------------------------------------------- */
+@media (max-width: 800px) {
+
+  /* La sidebar n'est plus fixe : elle passe au-dessus du contenu */
+  .sidebar {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 16px 20px;
+    border-right: 0;
+    border-bottom: 2px solid var(--pink-deep);
+  }
+
+  .brand {
+    margin-bottom: 12px;
+  }
+
+  .main {
+    margin-left: 0;
+  }
+
+  /* Le <summary> devient visible : c'est lui qui replie / déplie les filtres */
+  .sidebar__toggle {
+    display: block;
+    padding: 6px 0;
+    color: var(--pink);
+    font-size: 22px;
+    text-transform: uppercase;
+    list-style: none;          /* retire le triangle par défaut… */
+    cursor: pointer;
+  }
+
+  .sidebar__toggle::-webkit-details-marker {
+    display: none;             /* … aussi sur Safari */
+  }
+
+  /* … et on met le nôtre : ▸ fermé, ▾ ouvert */
+  .sidebar__toggle::before { content: "▸ "; }
+  details[open] > .sidebar__toggle::before { content: "▾ "; }
+
+  .sidebar .kicker {
+    display: none;             /* le <summary> joue déjà ce rôle */
+  }
+
+  .filters {
+    padding: 8px 0 12px;
+  }
+
+  .hero {
+    padding-top: 16px;
+  }
+
+  .hero .hud,
+  .error .hud {
+    padding: 0 20px;
+    font-size: 16px;
+    letter-spacing: 0.06em;
+  }
+
+  .hero__inner {
+    padding: 36px 0 28px;
+  }
+
+  .horizon {
+    height: 140px;
+  }
+
+  .content {
+    padding: 28px 16px 48px;
+  }
+
+  /* Cartes plus étroites : 2 colonnes sur téléphone */
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 16px;
+  }
+
+  .card {
+    padding: 8px;
+  }
+
+  .card__title {
+    font-size: 22px;
+  }
+
+  .detail {
+    padding: 32px 20px;
+    gap: 36px;
+  }
+
+  .detail__cover {
+    width: 240px;
+  }
+}
+
+/* Si l'utilisateur a demandé moins d'animations dans son système : grille figée */
+@media (prefers-reduced-motion: reduce) {
+  .horizon::before {
+    animation: none;
+  }
+}
