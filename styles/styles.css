@@ -2,7 +2,7 @@
 
 /* 1. VARIABLES ---------------------------------------------------------------
    Une seule famille de couleurs : le rose, du plus clair au plus sombre. */
-:root { /*une variable se définit une fois dans :root, et tu peux ensuite l’utiliser n’importe où plus bas ou plus haut dans le fichier, avec var(--nom).*/
+:root {
   --bg: #241419;             /* fond principal : prune très sombre */
   --bg-deep: #170C11;        /* encore plus sombre : champs, ombres dures */
   --surface: #2F1B24;        /* cartes, sidebar */
@@ -24,11 +24,12 @@
   --font-ui: "VT323", ui-monospace, monospace;               /* texte */
 }
 
+/* 2. BASE + CIEL ÉTOILÉ ----------------------------------------------------- */
 body {
   margin: 0;
   color: var(--text);
   font-family: var(--font-ui);
-  font-size: 20px;             /* VT323 est petite : 20px ≈ 15px d'une police classique */
+  font-size: 20px;
   line-height: 1.25;
   background-color: var(--bg);
   /* Ciel étoilé : chaque radial-gradient est une étoile ;
@@ -48,18 +49,26 @@ h1, h2, h3, p, dl, dd, ul {
 
 a { color: inherit; text-decoration: none; }
 
+/* 3. TYPO PIXEL ------------------------------------------------------------- */
+.kicker {
+  font-family: var(--font-pixel);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--pink-light);
+  text-shadow: 0 2px 0 var(--pink-deep);
+}
+
+/* 4. SIDEBAR ---------------------------------------------------------------- */
 .sidebar {
   position: fixed; top: 0; left: 0;
-  width: 260px; height: 100vh;
+  width: var(--sidebar-w); height: 100vh;
   padding: 24px 20px;
   background-color: rgba(23, 12, 17, 0.88);
   border-right: 2px solid var(--pink-deep);
-  /* background: hotpink; */
 }
 
-.sidebar-title { /* titre Jul discographie */
-  height: 32px;  
-  /* background: #cff77a; */
+.sidebar-title {
+  display: block;
 }
 
 .sidebar-title-name {
@@ -78,19 +87,11 @@ a { color: inherit; text-decoration: none; }
   text-transform: uppercase;
 }
 
-.sidebar-filters { /* filtre de la sidebar*/
+.sidebar-filters {
   display: flex;
   flex-direction: column;
   gap: 16px;
   margin-top: 24px;
-}
-
-.kicker {
-  font-family: var(--font-pixel);
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  color: var(--pink-light);
-  text-shadow: 0 2px 0 var(--pink-deep);
 }
 
 .field {
@@ -136,6 +137,11 @@ a { color: inherit; text-decoration: none; }
   letter-spacing: 0.08em;
 }
 
+.link-muted:hover {
+  color: var(--pink-light);
+}
+
+/* 5. BOUTONS PIXEL ---------------------------------------------------------- */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -165,61 +171,145 @@ a { color: inherit; text-decoration: none; }
   box-shadow: inset 3px 3px 0 var(--pink-dark);
 }
 
-.link-muted:hover {
+/* variante secondaire : fond sombre, texte et bordure roses */
+.btn--ghost {
+  background: var(--surface);
   color: var(--pink-light);
-}
-.main { /* zone principale */
-  margin-left: 260px;
-}
-
-.bigHeader { /* zone du "header" */
-  height: 510px;
-  margin: 0;
-  padding-top: 1px; /* évite le margin-collapse avec .bigHeader-header */
-  /* background: #5b3fa0; */
+  border-color: var(--pink);
+  box-shadow: 4px 4px 0 var(--pink-deep);
 }
 
-.bigHeader-header {  /* zone tout en haut du header */
-  height: 40px; 
-  margin: 16px 40px; 
-  background: #17382b; 
+.btn--ghost:hover {
+  background: var(--surface-hover);
+  box-shadow: 6px 6px 0 var(--pink-deep), 0 0 18px var(--glow);
 }
 
-.bigHeader-content{ /* zone du contenu du header : JUL EN BIIIG */
+.btn--ghost:active {
+  box-shadow: none;
+}
+
+/* 6. ZONE PRINCIPALE + BANNIÈRE --------------------------------------------- */
+.main {
+  margin-left: var(--sidebar-w);
+}
+
+.bigHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 20px;
+}
+
+/* la barre d'infos : texte à gauche, pile à droite */
+.bigHeader-header {
+  align-self: stretch;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  color: var(--text-muted);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* la pile : un cadre + un remplissage à 70 % + un petit téton */
+.battery {
+  position: relative;
+  width: 34px;
+  height: 18px;
+  padding: 2px;
+  border: 2px solid var(--pink);
+}
+
+.battery::before {
+  content: "";
+  display: block;
+  width: 70%;
+  height: 100%;
+  background: var(--pink);
+}
+
+.battery::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  right: -6px;
+  width: 4px;
+  height: 8px;
+  background: var(--pink);
+}
+
+.bigHeader-content {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 22px;
+  padding: 56px 0 40px;
 }
 
-.bigHeader-title   { /* zone du titre du header : JUL EN BIIIG */
-  width: 400px; 
-  height: 160px; 
-  /* background: #c6dbfb;  */
+.bigHeader-title {
+  font-family: var(--font-pixel);
+  font-weight: 400;
+  font-size: clamp(4rem, 11vw, 8.5rem);
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+  color: var(--pink-light);
+  text-shadow:
+    0 2px 0 var(--pink),
+    0 4px 0 var(--pink-dark),
+    0 6px 0 var(--pink-dark),
+    0 8px 0 var(--pink-deep),
+    0 0 28px var(--glow);
 }
 
-.bigHeader-actions { /* zone du bouton du header : BOUTON */
-  width: 400px;
-  height: 50px;
-  background: #f5c6e8;
+.sparkles {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+  color: var(--pink);
+  font-size: 34px;
+  line-height: 1;
+  text-shadow: 0 0 12px var(--glow);
 }
 
-
-.horizon {height: 200px; /* zone de la ligne horizontale avce l'animation stylée*/
-  border-top: 2px solid black;
-  /* background: orange; */
+.sparkles span:nth-child(2) {
+  font-size: 48px;             /* l'étoile du milieu est plus grande */
 }
 
-.content { /* zone du contenu principal */
-  min-height: 1080px;
+.bigHeader-count {
+  color: var(--text-muted);
+  font-size: 24px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.bigHeader-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+}
+
+/* 7. HORIZON ---------------------------------------------------------------- */
+/* TEMPORAIRE : sera remplacé par la grille en perspective */
+.horizon {
+  height: 200px;
+  border-top: 2px solid var(--pink);
+}
+
+/* 8. CONTENU, GRILLE ET CARTES ---------------------------------------------- */
+.content {
   padding: 40px 40px 72px;
-  /* background: khaki; */
 }
 
-.content-title { 
-  height: 36px; 
-  background: #cbd0d8; 
-  margin-bottom: 28px; 
+/* TEMPORAIRE : titre de section */
+.content-title {
+  height: 36px;
+  background: #cbd0d8;
+  margin-bottom: 28px;
 }
 
 .grid {
@@ -227,9 +317,11 @@ a { color: inherit; text-decoration: none; }
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
   list-style: none;
-  padding: 0; margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
+/* TEMPORAIRE : carte, pochette et zone d'infos */
 .card {
   display: flex;
   flex-direction: column;
@@ -237,13 +329,13 @@ a { color: inherit; text-decoration: none; }
   background: #8adfe6;
 }
 
-.cover { /* zone de l'image de la cover */
+.cover {
   aspect-ratio: 1 / 1;
   background: #3b2706;
 }
 
 .card-info {
   height: 110px;
-   margin: 16px 0;
-    background: #b9fb4f;
-  }
+  margin: 16px 0;
+  background: #b9fb4f;
+}
