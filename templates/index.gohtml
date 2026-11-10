@@ -9,9 +9,46 @@
     <link rel="stylesheet" href="/styles/styles.css">
   </head>
   <body>
-    <aside class="sidebar">
-      <div class="sidebar-title"></div>
-      <div class="sidebar-filters"></div>
+     <aside class="sidebar"> <!--tout ca c'est la partie de la sidebar : debut -->
+      <a class="sidebar-title" href="/">
+        <span class="sidebar-title-name">JUL</span>
+        <span class="sidebar-title-sub">Discographie</span>
+      </a>
+
+      <form class="sidebar-filters" method="GET" action="/">
+        <span class="kicker">✦ Options ✦</span>
+
+        <div class="field">
+          <label for="year">Année de sortie</label>
+          <select id="year" name="year">
+            <option value="">Toutes</option>
+            <option value="2024">2024</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="type">Type</label>
+          <select id="type" name="type">
+            <option value="">Tous</option>
+            <option value="singles">Singles</option>
+            <option value="albums">Albums</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="feat">Feat</label>
+          <select id="feat" name="feat">
+            <option value="">Tous</option>
+            <option value="oui">Oui</option>
+            <option value="non">Non</option>
+          </select>
+        </div>
+
+        <div class="filters-actions">
+          <button class="btn" type="submit">Filtrer</button>
+          <a class="link-muted" href="/">Réinitialiser</a>
+        </div>
+      </form>
     </aside>
 
     <main class="main">

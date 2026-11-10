@@ -58,16 +58,116 @@ a { color: inherit; text-decoration: none; }
 }
 
 .sidebar-title { /* titre Jul discographie */
-  height: 90px;  
-  background: #cff77a;
+  height: 32px;  
+  /* background: #cff77a; */
+}
+
+.sidebar-title-name {
+  display: block;
+  font-family: var(--font-pixel);
+  font-size: 22px;
+  color: var(--pink-light);
+  text-shadow: 0 3px 0 var(--pink-dark);
+}
+
+.sidebar-title-sub {
+  display: block;
+  margin-top: 6px;
+  color: var(--text-muted);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
 }
 
 .sidebar-filters { /* filtre de la sidebar*/
-  height: 360px; 
-  margin-top: 24px; 
-  background: white; 
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 24px;
 }
 
+.kicker {
+  font-family: var(--font-pixel);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--pink-light);
+  text-shadow: 0 2px 0 var(--pink-deep);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.field label {
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.field select {
+  width: 100%;
+  padding: 6px 10px;
+  border: 2px solid var(--pink-deep);
+  border-radius: 0;
+  background: var(--bg-deep);
+  color: var(--text);
+  font-family: var(--font-ui);
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.field select:hover,
+.field select:focus {
+  border-color: var(--pink);
+}
+
+.filters-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.link-muted {
+  color: var(--text-muted);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 6px 20px;
+  border: 2px solid var(--pink-light);
+  border-radius: 0;
+  background: var(--pink);
+  color: var(--bg-deep);
+  font-family: var(--font-ui);
+  font-size: 22px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: inset -3px -3px 0 var(--pink-dark), 4px 4px 0 var(--pink-deep);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: inset -3px -3px 0 var(--pink-dark), 6px 6px 0 var(--pink-deep), 0 0 18px var(--glow);
+}
+
+.btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: inset 3px 3px 0 var(--pink-dark);
+}
+
+.link-muted:hover {
+  color: var(--pink-light);
+}
 .main { /* zone principale */
   margin-left: 260px;
 }
@@ -147,8 +247,3 @@ a { color: inherit; text-decoration: none; }
    margin: 16px 0;
     background: #b9fb4f;
   }
-
-.card .btn {
-  height: 36px;
-  background: #5b1fe0;
- }
