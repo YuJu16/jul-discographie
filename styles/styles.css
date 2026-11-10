@@ -52,7 +52,8 @@ a { color: inherit; text-decoration: none; }
   position: fixed; top: 0; left: 0;
   width: 260px; height: 100vh;
   padding: 24px 20px;
-  border-right: 2px solid black;
+  background-color: rgba(23, 12, 17, 0.88);
+  border-right: 2px solid var(--pink-deep);
   /* background: hotpink; */
 }
 
