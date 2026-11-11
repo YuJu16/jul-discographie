@@ -481,3 +481,19 @@ a { color: inherit; text-decoration: none; }
   color: var(--pink-light);
   line-height: 1.1;
 }
+
+/* message quand aucun titre ne correspond */
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding: 64px 24px;
+  border: 2px dashed var(--pink-deep);
+  text-align: center;
+}
+
+.empty-text {
+  font-size: 26px;
+  color: var(--pink-light);
+}

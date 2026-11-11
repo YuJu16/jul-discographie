@@ -73,8 +73,8 @@
             <span>✦</span><span>✦</span><span>✦</span>
           </div>
 
-          <!-- écrit à la main pour l'instant, Go le calculera -->
-          <p class="bigHeader-count">8 titres affichés</p>
+          <!-- CHANGÉ : le nombre vient de Go (len = taille de la liste) -->
+          <p class="bigHeader-count">{{len .}} titres affichés</p>
 
           <div class="bigHeader-actions">
             <!-- #titres = descend jusqu'à la liste plus bas -->
@@ -91,6 +91,8 @@
       <section class="content" id="titres">
         <h2 class="content-title kicker">✦ Titres ✦</h2>
 
+        <!-- CHANGÉ : s'il y a des titres on affiche la grille, sinon le message vide -->
+        {{if .}}
         <ul class="grid">
           <!-- Go répète ce <li> pour chaque titre de la liste -->
           {{range .}}
@@ -109,6 +111,12 @@
           </li>
           {{end}}
         </ul>
+        {{else}}
+        <div class="empty">
+          <p class="empty-text">Aucun titre ne correspond à ces filtres.</p>
+          <a class="btn" href="/">Réinitialiser</a>
+        </div>
+        {{end}}
       </section>
     </main>
   </body>

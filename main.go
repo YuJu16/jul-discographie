@@ -25,7 +25,7 @@ func accueil(reponse http.ResponseWriter, demande *http.Request) {
 	}
 
 	// La liste des titres (faux pour l'instant)
-	titres := fauxTitres()
+	titres := []Titre{} // test : liste vide
 
 	// Envoi du HTML au navigateur, avec les titres injectés dans le template
 	erreur = page.Execute(reponse, titres)
