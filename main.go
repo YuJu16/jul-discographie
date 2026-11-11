@@ -9,9 +9,9 @@ import (
 // fauxTitres renvoie des titres d'exemple, en attendant Spotify
 func fauxTitres() []Titre {
 	return []Titre{
-		{ID: "1", Nom: "Titre 1", Artistes: []string{"Artiste A"}, DateSortie: "2024-05-10", DureeMs: 222000, Type: "single"},
-		{ID: "2", Nom: "Titre 2", Artistes: []string{"Artiste A", "Artiste B"}, DateSortie: "2023-11-03", DureeMs: 198000, Type: "album"},
-		{ID: "3", Nom: "Titre 3", Artistes: []string{"Artiste A"}, DateSortie: "2022-02-18", DureeMs: 245000, Type: "album"},
+		{ID: "1", Nom: "Titre 1", Artistes: []string{"Artiste A"}, DateSortie: "2024-05-10", DureeMs: 222000, Type: "single", Album: "Album 1", LienSpotify: "https://open.spotify.com"},
+		{ID: "2", Nom: "Titre 2", Artistes: []string{"Artiste A", "Artiste B"}, DateSortie: "2023-11-03", DureeMs: 198000, Type: "album", Album: "Album 2", LienSpotify: "https://open.spotify.com"},
+		{ID: "3", Nom: "Titre 3", Artistes: []string{"Artiste A"}, DateSortie: "2022-02-18", DureeMs: 245000, Type: "album", Album: "Album 2", LienSpotify: "https://open.spotify.com"},
 	}
 }
 
@@ -25,7 +25,7 @@ func accueil(reponse http.ResponseWriter, demande *http.Request) {
 	}
 
 	// La liste des titres (faux pour l'instant)
-	titres := []Titre{} // test : liste vide
+	titres := fauxTitres()
 
 	// Envoi du HTML au navigateur, avec les titres injectés dans le template
 	erreur = page.Execute(reponse, titres)
@@ -35,9 +35,35 @@ func accueil(reponse http.ResponseWriter, demande *http.Request) {
 	}
 }
 
+// detail affiche la page d'un seul titre, retrouvé grâce à l'id dans l'URL
+func detail(reponse http.ResponseWriter, demande *http.Request) {
+	id := demande.PathValue("id") // la partie {id} de /tracks/{id}
+
+	page, erreur := template.ParseFiles("templates/detail.gohtml")
+	if erreur != nil {
+		http.Error(reponse, "Impossible de charger la page", http.StatusInternalServerError)
+		return
+	}
+
+	// on cherche le titre qui a cet id
+	for _, titre := range fauxTitres() {
+		if titre.ID == id {
+			erreur = page.Execute(reponse, titre)
+			if erreur != nil {
+				http.Error(reponse, "Impossible d'afficher la page", http.StatusInternalServerError)
+			}
+			return
+		}
+	}
+
+	// aucun titre trouvé : 404 simple pour l'instant (la belle page vient après)
+	http.NotFound(reponse, demande)
+}
+
 func main() {
 	// Route principale "/" reliée à la fonction accueil
 	http.HandleFunc("/", accueil)
+	http.HandleFunc("/tracks/{id}", detail)
 
 	// Les fichiers du dossier styles sont servis sur /styles/
 	http.Handle("/styles/", http.StripPrefix("/styles/", http.FileServer(http.Dir("styles"))))

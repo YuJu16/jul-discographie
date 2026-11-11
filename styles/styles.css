@@ -497,3 +497,84 @@ a { color: inherit; text-decoration: none; }
   font-size: 26px;
   color: var(--pink-light);
 }
+
+/* ---------- page détail ---------- */
+
+/* l'horizon reste collé en bas de la page */
+.detail-page .main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+}
+
+/* pochette à gauche, infos à droite (l'une sous l'autre si l'écran est étroit) */
+.detail {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 56px;
+  padding: 72px 40px 48px;
+}
+
+.detail-cover {
+  width: 320px;
+  max-width: 100%;
+  border: 2px solid var(--pink);
+  box-shadow: 8px 8px 0 var(--pink-deep), 0 0 40px var(--glow), 0 0 90px var(--glow-soft);
+}
+
+.detail-info {
+  flex: 1;
+  min-width: 280px;
+}
+
+.detail-title {
+  margin: 20px 0 32px;
+  font-family: var(--font-pixel);
+  font-weight: 400;
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  line-height: 1.1;
+  color: var(--pink-light);
+  text-shadow:
+    0 2px 0 var(--pink-dark),
+    0 4px 0 var(--pink-deep),
+    0 0 18px var(--glow);
+}
+
+/* le mot à gauche (dt), sa valeur à droite (dd) */
+.detail-meta {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 6px 24px;
+  margin-bottom: 36px;
+  font-size: 22px;
+}
+
+.detail-meta dt {
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.detail-meta dd {
+  color: var(--pink-light);
+}
+
+.btn--play {
+  padding: 10px 28px;
+  font-size: 26px;
+}
+
+/* lien "retour" dans la sidebar */
+.back-link {
+  display: block;
+  margin-top: 32px;
+  color: var(--pink);
+  font-size: 22px;
+  text-transform: uppercase;
+}
+
+.back-link:hover {
+  color: var(--pink-light);
+}

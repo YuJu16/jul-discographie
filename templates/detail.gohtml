@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>{{.Nom}}</title>
+    <!-- polices Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/styles.css">
+  </head>
+  <body class="detail-page">
+    <!-- barre de gauche : juste le logo et le retour -->
+    <aside class="sidebar">
+      <a class="sidebar-title" href="/">
+        <span class="sidebar-title-name">JUL</span>
+        <span class="sidebar-title-sub">Discographie</span>
+      </a>
+      <a class="back-link" href="/">◀ Retour aux titres</a>
+    </aside>
+
+    <main class="main">
+      <article class="detail">
+        <div class="cover detail-cover"></div>
+
+        <div class="detail-info">
+          <p class="kicker">✦ Titre ✦</p>
+          <h1 class="detail-title">{{.Nom}}</h1>
+
+          <!-- liste de définitions : le mot à gauche, sa valeur à droite -->
+          <dl class="detail-meta">
+            <dt>Album</dt>
+            <dd>{{.Album}}</dd>
+            <dt>Artistes</dt>
+            <dd>{{.ArtistesTexte}}</dd>
+            <dt>Sortie</dt>
+            <dd>{{.DateFR}}</dd>
+            <dt>Durée</dt>
+            <dd>{{.Duree}}</dd>
+          </dl>
+
+          <a class="btn btn--play" href="{{.LienSpotify}}" target="_blank" rel="noopener">▶ Ouvrir sur Spotify</a>
+        </div>
+      </article>
+
+      <!-- la grille animée collée en bas de la page -->
+      <div class="horizon"></div>
+    </main>
+  </body>
+</html>
