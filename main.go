@@ -37,3 +37,12 @@ func main() {
 		fmt.Println("Erreur serveur :", erreur)
 	}
 }
+
+// fauxTitre renvoie des titres d'exemple en attendant l'api Spotify
+func fauxTitre() []Titre {
+	return []Titre{
+		{ID: "1", Nom: "Titre 1", Artist: []string{"Artiste A"}, DateSortie: "2024-05-10", DureeMS: 222000, Type: "single"},
+		{ID: "2", Nom: "Titre 2", Artist: []string{"Artiste A", "Artiste B"}, DateSortie: "2023-11-03", DureeMS: 198000, Type: "album"},
+		{ID: "3", Nom: "Titre 3", Artist: []string{"Artiste A"}, DateSortie: "2022-02-18", DureeMS: 245000, Type: "album"},
+	}
+}
