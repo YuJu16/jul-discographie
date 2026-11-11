@@ -92,20 +92,22 @@
         <h2 class="content-title kicker">✦ Titres ✦</h2>
 
         <ul class="grid">
-          <!-- une seule carte pour l'instant, Go la répétera pour chaque titre -->
+          <!-- Go répète ce <li> pour chaque titre de la liste -->
+          {{range .}}
           <li>
             <article class="card">
               <div class="cover"></div>
-              <h3 class="card-title">Titre du morceau</h3>
-              <p class="card-artists">Artiste 1, Artiste 2</p>
-              <p class="card-meta">2024 · 3:42</p>
+              <h3 class="card-title">{{.Nom}}</h3>
+              <p class="card-artists">{{.ArtistesTexte}}</p>
+              <p class="card-meta">{{.Annee}} · {{.Duree}}</p>
               <div class="card-badges">
-                <span class="badge badge--type">Single</span>
-                <span class="badge badge--feat">Feat</span>
+                <span class="badge badge--type">{{.Type}}</span>
+                {{if .AFeat}}<span class="badge badge--feat">Feat</span>{{end}}
               </div>
               <a class="btn" href="#">Voir le détail</a>
             </article>
           </li>
+          {{end}}
         </ul>
       </section>
     </main>
