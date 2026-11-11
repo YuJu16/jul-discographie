@@ -3,19 +3,21 @@
   <head>
     <meta charset="utf-8">
     <title>Accueil</title>
+    <!-- polices Google Fonts : Press Start 2P (titres) et VT323 (texte) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles/styles.css">
   </head>
   <body>
-    <!-- SIDEBAR -->
+    <!-- barre de gauche : logo + filtres -->
     <aside class="sidebar">
       <a class="sidebar-title" href="/">
         <span class="sidebar-title-name">JUL</span>
         <span class="sidebar-title-sub">Discographie</span>
       </a>
 
+      <!-- les choix partent dans l'URL (GET), Go les lira plus tard -->
       <form class="sidebar-filters" method="GET" action="/">
         <span class="kicker">✦ Options ✦</span>
 
@@ -52,9 +54,12 @@
       </form>
     </aside>
 
-    <!-- CONTENU PRINCIPAL -->
+    <!-- tout ce qui est à droite de la sidebar -->
     <main class="main">
+
+      <!-- bannière du haut avec le gros JUL -->
       <section class="bigHeader">
+        <!-- petite barre d'infos : texte à gauche, pile à droite -->
         <div class="bigHeader-header">
           <span>♥ ♥ ♥ Joueur 1 · Marseille</span>
           <span class="battery"></span>
@@ -68,24 +73,36 @@
             <span>✦</span><span>✦</span><span>✦</span>
           </div>
 
+          <!-- écrit à la main pour l'instant, Go le calculera -->
           <p class="bigHeader-count">8 titres affichés</p>
 
           <div class="bigHeader-actions">
+            <!-- #titres = descend jusqu'à la liste plus bas -->
             <a class="btn" href="#titres">▶ Voir les titres</a>
             <a class="btn btn--ghost" href="https://open.spotify.com" target="_blank" rel="noopener">Spotify</a>
           </div>
         </div>
       </section>
 
+      <!-- la grille rose animée sous la bannière (tout est fait en CSS) -->
       <div class="horizon"></div>
 
+      <!-- liste des titres -->
       <section class="content" id="titres">
-        <h2 class="content-title">Albums</h2>
+        <h2 class="content-title kicker">✦ Titres ✦</h2>
+
         <ul class="grid">
+          <!-- une seule carte pour l'instant, Go la répétera pour chaque titre -->
           <li>
             <article class="card">
               <div class="cover"></div>
-              <div class="card-info"></div>
+              <h3 class="card-title">Titre du morceau</h3>
+              <p class="card-artists">Artiste 1, Artiste 2</p>
+              <p class="card-meta">2024 · 3:42</p>
+              <div class="card-badges">
+                <span class="badge badge--type">Single</span>
+                <span class="badge badge--feat">Feat</span>
+              </div>
               <a class="btn" href="#">Voir le détail</a>
             </article>
           </li>
