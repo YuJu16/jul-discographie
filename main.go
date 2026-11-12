@@ -9,7 +9,6 @@ import (
 
 // fauxTitres renvoie des titres d'exemple, en attendant Spotify
 func fauxTitres() []Titre {
-
 	return []Titre{
 		{ID: "1", Nom: "Titre 1", Artistes: []string{"Artiste A"}, DateSortie: "2024-05-10", DureeMs: 222000, Type: "single", Album: "Album 1", LienSpotify: "https://open.spotify.com"},
 		{ID: "2", Nom: "Titre 2", Artistes: []string{"Artiste A", "Artiste B"}, DateSortie: "2023-11-03", DureeMs: 198000, Type: "album", Album: "Album 2", LienSpotify: "https://open.spotify.com"},
@@ -89,17 +88,40 @@ func detail(reponse http.ResponseWriter, demande *http.Request) {
 }
 
 func main() {
-
 	// on charge le .env avant de démarrer
 	chargerEnv()
 	fmt.Println("Client ID chargé :", os.Getenv("SPOTIFY_CLIENT_ID") != "")
 	fmt.Println("Secret chargé :", os.Getenv("SPOTIFY_CLIENT_SECRET") != "")
 
-	// test : on demande un token à Spotify (on n'affiche jamais le token lui-même)
-	if token, erreur := demanderToken(); erreur != nil {
-		fmt.Println("Erreur token :", erreur)
+	// Petit test de connexion à Spotify au démarrage
+	token, erreur := demanderToken()
+
+	// Si ça plante, on l'affiche (mais on laisse le serveur tourner)
+	if erreur != nil {
+		fmt.Println("❌ Erreur lors de la récupération du token :", erreur)
 	} else {
-		fmt.Println("Token reçu, longueur :", len(token))
+		// Règle d'or de sécu : on n'affiche JAMAIS le token en clair dans les logs
+		fmt.Println("✅ Token reçu ! (longueur :", len(token), ")")
+
+		albums, erreurAlbums := recupererAlbums(token)
+		if erreurAlbums != nil {
+			fmt.Println("❌ Erreur lors de la récupération des albums :", erreurAlbums)
+		} else {
+			fmt.Println("💿 On a trouvé", len(albums), "albums/singles pour le J :")
+
+			// On boucle sur les albums pour afficher un petit résumé propre
+			for _, album := range albums {
+				fmt.Println(" ->", album.Nom, "(sorti le", album.DateSortie, ") [", album.Type, "]")
+			}
+
+			// Une seule fois, après la boucle : les titres de tous les albums
+			titres, erreurTitres := recupererTitres(token, albums)
+			if erreurTitres != nil {
+				fmt.Println("❌ Erreur lors de la récupération des titres :", erreurTitres)
+			} else {
+				fmt.Println("🎵 Titres récupérés :", len(titres))
+			}
+		}
 	}
 
 	// Route principale "/" reliée à la fonction accueil
@@ -112,7 +134,7 @@ func main() {
 	fmt.Println("Serveur lancé sur http://localhost:8080")
 
 	// Lancement du serveur sur le port 8080 (nil = routeur par défaut de Go)
-	erreur := http.ListenAndServe(":8080", nil)
+	erreur = http.ListenAndServe(":8080", nil)
 	if erreur != nil {
 		fmt.Println("Erreur serveur :", erreur)
 	}
