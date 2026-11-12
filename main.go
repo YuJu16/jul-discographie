@@ -4,10 +4,12 @@ import (
 	"fmt"
 	"html/template"
 	"net/http"
+	"os"
 )
 
 // fauxTitres renvoie des titres d'exemple, en attendant Spotify
 func fauxTitres() []Titre {
+
 	return []Titre{
 		{ID: "1", Nom: "Titre 1", Artistes: []string{"Artiste A"}, DateSortie: "2024-05-10", DureeMs: 222000, Type: "single", Album: "Album 1", LienSpotify: "https://open.spotify.com"},
 		{ID: "2", Nom: "Titre 2", Artistes: []string{"Artiste A", "Artiste B"}, DateSortie: "2023-11-03", DureeMs: 198000, Type: "album", Album: "Album 2", LienSpotify: "https://open.spotify.com"},
@@ -87,6 +89,12 @@ func detail(reponse http.ResponseWriter, demande *http.Request) {
 }
 
 func main() {
+
+	// on charge le .env avant de démarrer
+	chargerEnv()
+	fmt.Println("Client ID chargé :", os.Getenv("SPOTIFY_CLIENT_ID") != "")
+	fmt.Println("Secret chargé :", os.Getenv("SPOTIFY_CLIENT_SECRET") != "")
+
 	// Route principale "/" reliée à la fonction accueil
 	http.HandleFunc("/", accueil)
 	http.HandleFunc("/tracks/{id}", detail)
