@@ -21,11 +21,13 @@
       <form class="sidebar-filters" method="GET" action="/">
         <span class="kicker">✦ Options ✦</span>
 
-        <div class="field">
+                <div class="field">
           <label for="year">Année de sortie</label>
           <select id="year" name="year">
             <option value="">Toutes</option>
-            <option value="2024">2024</option>
+            {{range .Annees}}
+            <option value="{{.}}" {{if eq . $.Filtres.Annee}}selected{{end}}>{{.}}</option>
+            {{end}}
           </select>
         </div>
 
@@ -33,8 +35,8 @@
           <label for="type">Type</label>
           <select id="type" name="type">
             <option value="">Tous</option>
-            <option value="singles">Singles</option>
-            <option value="albums">Albums</option>
+            <option value="single" {{if eq .Filtres.Type "single"}}selected{{end}}>Singles</option>
+            <option value="album" {{if eq .Filtres.Type "album"}}selected{{end}}>Albums</option>
           </select>
         </div>
 
@@ -42,8 +44,8 @@
           <label for="feat">Feat</label>
           <select id="feat" name="feat">
             <option value="">Tous</option>
-            <option value="oui">Oui</option>
-            <option value="non">Non</option>
+            <option value="oui" {{if eq .Filtres.Feat "oui"}}selected{{end}}>Oui</option>
+            <option value="non" {{if eq .Filtres.Feat "non"}}selected{{end}}>Non</option>
           </select>
         </div>
 
@@ -74,7 +76,7 @@
           </div>
 
           <!-- CHANGÉ : le nombre vient de Go (len = taille de la liste) -->
-          <p class="bigHeader-count">{{len .}} titres affichés</p>
+          <p class="bigHeader-count">{{len .Titres}} titres affichés</p>
 
           <div class="bigHeader-actions">
             <!-- #titres = descend jusqu'à la liste plus bas -->
@@ -92,10 +94,10 @@
         <h2 class="content-title kicker">✦ Titres ✦</h2>
 
         <!-- CHANGÉ : s'il y a des titres on affiche la grille, sinon le message vide -->
-        {{if .}}
+        {{if .Titres}}
         <ul class="grid">
           <!-- Go répète ce <li> pour chaque titre de la liste -->
-          {{range .}}
+          {{range .Titres}}
           <li>
             <article class="card">
               <div class="cover">

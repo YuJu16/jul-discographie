@@ -43,8 +43,16 @@ func accueil(reponse http.ResponseWriter, demande *http.Request) {
 		return
 	}
 
-	// On injecte notre variable globale "titresJul" dans le HTML
-	if erreur := page.Execute(reponse, titresJul); erreur != nil {
+	// On lit les filtres choisis dans l'URL, puis on prépare ce qu'on envoie à la page
+	filtres := lireFiltres(demande)
+	donnees := PageAccueil{
+		Titres:  filtrerTitres(titresJul, filtres),
+		Annees:  listerAnnees(titresJul), // les années viennent de TOUS les titres
+		Filtres: filtres,
+	}
+
+	// On injecte nos données dans le HTML
+	if erreur := page.Execute(reponse, donnees); erreur != nil {
 		http.Error(reponse, "Erreur d'affichage", http.StatusInternalServerError)
 	}
 }
