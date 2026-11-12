@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>{{.Titre}}</title>
+    <!-- polices Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/styles.css">
+  </head>
+  <body>
+    <main class="erreur">
+      <!-- petite barre d'infos du haut, comme sur l'accueil -->
+      <div class="erreur-hud">
+        <span>♥ ♥ ♥ Joueur 1 · Marseille</span>
+        <span class="battery"></span>
+      </div>
+
+      <!-- le contenu, centré au milieu de la page -->
+      <div class="erreur-centre">
+        <span class="kicker">✦ Game over ✦</span>
+        <p class="erreur-code">{{.Code}}</p>
+
+        <div class="sparkles">
+          <span>✦</span><span>✦</span><span>✦</span>
+        </div>
+
+        <h1 class="erreur-titre">{{.Titre}}</h1>
+        <p class="erreur-texte">{{.Message}}</p>
+        <a class="btn" href="/">◀ Retour à l'accueil</a>
+      </div>
+
+      <div class="horizon"></div>
+    </main>
+  </body>
+</html>

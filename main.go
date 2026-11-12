@@ -15,8 +15,34 @@ func fauxTitres() []Titre {
 	}
 }
 
+// PageErreur contient ce qu'on affiche sur la page d'erreur
+type PageErreur struct {
+	Code    int
+	Titre   string
+	Message string
+}
+
+// afficherErreur montre la belle page d'erreur avec le bon code (404, 503...)
+func afficherErreur(reponse http.ResponseWriter, code int, titre string, message string) {
+	page, erreur := template.ParseFiles("templates/erreur.gohtml")
+	if erreur != nil {
+		// si même la page d'erreur est cassée, on envoie un texte simple
+		http.Error(reponse, titre, code)
+		return
+	}
+
+	reponse.WriteHeader(code) // le code doit être envoyé avant la page
+	page.Execute(reponse, PageErreur{Code: code, Titre: titre, Message: message})
+}
+
 // Handler de l'accueil : récupère la requête (demande) et écrit la vue dans (reponse)
 func accueil(reponse http.ResponseWriter, demande *http.Request) {
+	// "/" attrape toutes les URLs : si ce n'est pas exactement "/", la page n'existe pas
+	if demande.URL.Path != "/" {
+		afficherErreur(reponse, http.StatusNotFound, "Page introuvable", "Cette page n'existe pas.")
+		return
+	}
+
 	// Chargement du fichier HTML
 	page, erreur := template.ParseFiles("templates/index.gohtml")
 	if erreur != nil { // si erreur n'est pas vide (nil), fichier introuvable -> erreur 500 et on stoppe
@@ -56,8 +82,8 @@ func detail(reponse http.ResponseWriter, demande *http.Request) {
 		}
 	}
 
-	// aucun titre trouvé : 404 simple pour l'instant (la belle page vient après)
-	http.NotFound(reponse, demande)
+	// aucun titre trouvé : page 404
+	afficherErreur(reponse, http.StatusNotFound, "Titre introuvable", "Ce titre n'existe pas ou n'est plus disponible.")
 }
 
 func main() {

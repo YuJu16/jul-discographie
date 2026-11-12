@@ -578,3 +578,63 @@ a { color: inherit; text-decoration: none; }
 .back-link:hover {
   color: var(--pink-light);
 }
+
+/* ---------- page d'erreur ---------- */
+
+/* toute la hauteur de l'écran, l'horizon reste en bas */
+.erreur {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  text-align: center;
+}
+
+/* barre d'infos : texte à gauche, pile à droite */
+.erreur-hud {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 32px 0;
+}
+
+/* prend toute la place libre : le contenu se retrouve centré */
+.erreur-centre {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  padding: 40px 20px;
+}
+
+.erreur-code {
+  font-family: var(--font-pixel);
+  font-weight: 400;
+  font-size: clamp(5rem, 16vw, 9rem);
+  line-height: 1.1;
+  color: var(--pink-light);
+  text-shadow:
+    0 2px 0 var(--pink),
+    0 4px 0 var(--pink-dark),
+    0 6px 0 var(--pink-dark),
+    0 8px 0 var(--pink-deep),
+    0 0 28px var(--glow);
+}
+
+.erreur-titre {
+  font-family: var(--font-pixel);
+  font-weight: 400;
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  color: var(--pink-light);
+  text-shadow:
+    0 2px 0 var(--pink-dark),
+    0 4px 0 var(--pink-deep),
+    0 0 18px var(--glow);
+}
+
+.erreur-texte {
+  max-width: 460px;
+  color: var(--text-muted);
+  font-size: 24px;
+}
