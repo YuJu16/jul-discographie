@@ -6,25 +6,25 @@ import (
 	"os"
 )
 
-// Notre fichier de cache local pour éviter de cramer notre quota Spotify (anti-erreur 429)
+// Fichier de cache local pour éviter de re-taper Spotify à chaque lancement (anti-429)
 const fichierCache = "cache_titres.json"
 
-// Variable globale qui garde les sons en mémoire tant que le serveur est allumé
+// Garde les sons en mémoire tant que le serveur tourne
 var titresJul []Titre
 
-// Tente de récupérer les sons depuis notre fichier JSON local
+// Tente de récupérer les sons depuis le fichier JSON local
 func lireCache() ([]Titre, bool) {
-	// os.ReadFile fait tout d'un coup (ouvre, lit, et ferme le fichier)
+	// os.ReadFile ouvre, lit et ferme le fichier d'un coup
 	contenu, erreur := os.ReadFile(fichierCache)
 	if erreur != nil {
-		return nil, false // Fichier introuvable, on renvoie false
+		return nil, false // pas de fichier = pas de cache
 	}
 
 	var titres []Titre
-	// On transforme le texte du fichier en vrai tableau Go
+	// On transforme le texte du fichier en tableau Go
 	erreur = json.Unmarshal(contenu, &titres)
 
-	// Si le fichier est mal formaté ou vide, on fait comme s'il n'y avait pas de cache
+	// Fichier mal formé ou vide : on fait comme s'il n'y avait pas de cache
 	if erreur != nil || len(titres) == 0 {
 		return nil, false
 	}
@@ -32,49 +32,48 @@ func lireCache() ([]Titre, bool) {
 	return titres, true
 }
 
-// Sauvegarde notre tableau de sons dans le fichier
+// Sauvegarde le tableau de sons dans le fichier
 func ecrireCache(titres []Titre) error {
-	// MarshalIndent = comme JSON.stringify en JS, mais formaté proprement avec des espaces pour être lisible
+	// MarshalIndent = comme JSON.stringify en JS, mais bien indenté pour être lisible
 	contenu, erreur := json.MarshalIndent(titres, "", "  ")
 	if erreur != nil {
 		return erreur
 	}
 
-	// 0644 : permissions standards de fichier (lecture/écriture pour toi, lecture pour le reste)
+	// 0644 : permissions classiques (écriture pour moi, lecture pour les autres)
 	return os.WriteFile(fichierCache, contenu, 0644)
 }
 
-// Le chef d'orchestre : remplit titresJul depuis le cache, ou via l'API si le cache est vide
+// Remplit titresJul : d'abord depuis le cache, sinon depuis Spotify
 func chargerTitres() error {
-	// 1. On check d'abord notre fichier local
-	if titres, trouve := lireCache(); trouve {
+
+	// tokenActuel = "faux-token" // TEST à supprimer
+
+	// 1. On tente le raccourci : le fichier local
+	titres, trouve := lireCache()
+	if trouve {
 		titresJul = titres
 		fmt.Println("📦 Sons chargés depuis le cache local :", len(titres))
-		return nil // On arrête la fonction ici, pas besoin d'appeler Spotify !
+		return nil // on s'arrête là, pas d'appel API pour rien
 	}
 
-	// 2. Si on arrive là, c'est qu'on a pas de cache, donc on appelle l'API
-	fmt.Println("🌐 Aucun cache trouvé, on va taper l'API Spotify...")
+	// 2. Pas de cache : on interroge Spotify (le token est géré dans appelSpotify)
+	fmt.Println("🌐 Aucun cache trouvé, on va chercher sur Spotify...")
 
-	token, erreur := demanderToken()
+	albums, erreur := recupererAlbums()
 	if erreur != nil {
 		return erreur
 	}
 
-	albums, erreur := recupererAlbums(token)
+	titres, erreur = recupererTitres(albums)
 	if erreur != nil {
 		return erreur
 	}
 
-	titres, erreur := recupererTitres(token, albums)
-	if erreur != nil {
-		return erreur
-	}
-
-	// 3. On met à jour notre variable en mémoire...
+	// 3. On garde les titres en mémoire...
 	titresJul = titres
-	fmt.Println("✅ Sons récupérés via Spotify :", len(titres))
+	fmt.Println("✅ Sons récupérés via l'API :", len(titres))
 
-	// ...et on crée le fichier cache pour la prochaine fois !
+	// ... et dans le fichier pour la prochaine fois
 	return ecrireCache(titres)
 }
