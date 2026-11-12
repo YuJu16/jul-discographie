@@ -21,7 +21,9 @@
 
     <main class="main">
       <article class="detail">
-        <div class="cover detail-cover"></div>
+        <div class="cover detail-cover">
+          {{if .Pochette}}<img src="{{.Pochette}}" alt="Pochette de {{.Album}}">{{end}}
+        </div>
 
         <div class="detail-info">
           <p class="kicker">✦ Titre ✦</p>

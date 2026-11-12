@@ -98,7 +98,9 @@
           {{range .}}
           <li>
             <article class="card">
-              <div class="cover"></div>
+              <div class="cover">
+                {{if .Pochette}}<img src="{{.Pochette}}" alt="Pochette de {{.Album}}">{{end}}
+              </div>
               <h3 class="card-title">{{.Nom}}</h3>
               <p class="card-artists">{{.ArtistesTexte}}</p>
               <p class="card-meta">{{.Annee}} · {{.Duree}}</p>

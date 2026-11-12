@@ -638,3 +638,11 @@ a { color: inherit; text-decoration: none; }
   color: var(--text-muted);
   font-size: 24px;
 }
+
+/* l'image remplit tout le carré de la pochette */
+.cover img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
