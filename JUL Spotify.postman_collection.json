@@ -1,0 +1,367 @@
+{
+  "info": {
+    "_postman_id": "87fb46b1-1b23-4bd8-b641-ef9ab1d79a82",
+    "name": "JUL Spotify",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "50430297",
+    "_collection_link": "https://go.postman.co/collection/50430297-87fb46b1-1b23-4bd8-b641-ef9ab1d79a82?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "1 - Token",
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "username",
+              "value": "{{client_id}}",
+              "type": "string"
+            },
+            {
+              "key": "password",
+              "value": "{{client_secret}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "grant_type",
+              "value": "client_credentials"
+            }
+          ]
+        },
+        "url": {
+          "raw": "https://accounts.spotify.com/api/token",
+          "protocol": "https",
+          "host": [
+            "accounts",
+            "spotify",
+            "com"
+          ],
+          "path": [
+            "api",
+            "token"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "2 - Recherche JUL",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://api.spotify.com/v1/search?q=JUL&type=artist&limit=5",
+          "protocol": "https",
+          "host": [
+            "api",
+            "spotify",
+            "com"
+          ],
+          "path": [
+            "v1",
+            "search"
+          ],
+          "query": [
+            {
+              "key": "q",
+              "value": "JUL"
+            },
+            {
+              "key": "type",
+              "value": "artist"
+            },
+            {
+              "key": "limit",
+              "value": "5"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "3 - Discographie",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://api.spotify.com/v1/artists/{{artist_id}}/albums?include_groups=album,single&market=FR&limit=10",
+          "protocol": "https",
+          "host": [
+            "api",
+            "spotify",
+            "com"
+          ],
+          "path": [
+            "v1",
+            "artists",
+            "{{artist_id}}",
+            "albums"
+          ],
+          "query": [
+            {
+              "key": "include_groups",
+              "value": "album,single"
+            },
+            {
+              "key": "market",
+              "value": "FR"
+            },
+            {
+              "key": "limit",
+              "value": "10"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "4 - Recherche La bandite",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://api.spotify.com/v1/search?q=track:La bandite artist:Jul&type=track&market=FR&limit=5",
+          "protocol": "https",
+          "host": [
+            "api",
+            "spotify",
+            "com"
+          ],
+          "path": [
+            "v1",
+            "search"
+          ],
+          "query": [
+            {
+              "key": "q",
+              "value": "track:La bandite artist:Jul"
+            },
+            {
+              "key": "type",
+              "value": "track"
+            },
+            {
+              "key": "market",
+              "value": "FR"
+            },
+            {
+              "key": "limit",
+              "value": "5"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "5 - Detail La bandite",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://api.spotify.com/v1/tracks/{{track_id}}?market=FR",
+          "protocol": "https",
+          "host": [
+            "api",
+            "spotify",
+            "com"
+          ],
+          "path": [
+            "v1",
+            "tracks",
+            "{{track_id}}"
+          ],
+          "query": [
+            {
+              "key": "market",
+              "value": "FR"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "E1 - Token invalide",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "cacahuete",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://api.spotify.com/v1/search?q=track:La bandite artist:Jul&type=track&market=FR&limit=5",
+          "protocol": "https",
+          "host": [
+            "api",
+            "spotify",
+            "com"
+          ],
+          "path": [
+            "v1",
+            "search"
+          ],
+          "query": [
+            {
+              "key": "q",
+              "value": "track:La bandite artist:Jul"
+            },
+            {
+              "key": "type",
+              "value": "track"
+            },
+            {
+              "key": "market",
+              "value": "FR"
+            },
+            {
+              "key": "limit",
+              "value": "5"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "E2 - Morceau introuvable",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://api.spotify.com/v1/tracks/0000000000000000000000?market=FR",
+          "protocol": "https",
+          "host": [
+            "api",
+            "spotify",
+            "com"
+          ],
+          "path": [
+            "v1",
+            "tracks",
+            "0000000000000000000000"
+          ],
+          "query": [
+            {
+              "key": "market",
+              "value": "FR"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "E3 - Token mauvais grant_type",
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "username",
+              "value": "{{client_id}}",
+              "type": "string"
+            },
+            {
+              "key": "password",
+              "value": "{{client_secret}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "grant_type",
+              "value": "cacaheuete"
+            }
+          ]
+        },
+        "url": {
+          "raw": "https://accounts.spotify.com/api/token",
+          "protocol": "https",
+          "host": [
+            "accounts",
+            "spotify",
+            "com"
+          ],
+          "path": [
+            "api",
+            "token"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

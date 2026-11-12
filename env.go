@@ -38,7 +38,9 @@ func chargerEnv() {
 			continue
 		}
 
-		// On injecte la clé et la valeur dans l'environnement du serveur
-		os.Setenv(strings.TrimSpace(nom), strings.TrimSpace(valeur))
+		// on enlève les espaces, puis les guillemets éventuels autour de la valeur
+		valeur = strings.Trim(strings.TrimSpace(valeur), "\"'")
+		os.Setenv(strings.TrimSpace(nom), valeur)
+
 	}
 }

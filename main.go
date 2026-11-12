@@ -95,6 +95,13 @@ func main() {
 	fmt.Println("Client ID chargé :", os.Getenv("SPOTIFY_CLIENT_ID") != "")
 	fmt.Println("Secret chargé :", os.Getenv("SPOTIFY_CLIENT_SECRET") != "")
 
+	// test : on demande un token à Spotify (on n'affiche jamais le token lui-même)
+	if token, erreur := demanderToken(); erreur != nil {
+		fmt.Println("Erreur token :", erreur)
+	} else {
+		fmt.Println("Token reçu, longueur :", len(token))
+	}
+
 	// Route principale "/" reliée à la fonction accueil
 	http.HandleFunc("/", accueil)
 	http.HandleFunc("/tracks/{id}", detail)
