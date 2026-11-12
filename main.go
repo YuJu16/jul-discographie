@@ -36,6 +36,12 @@ func accueil(reponse http.ResponseWriter, demande *http.Request) {
 		return
 	}
 
+	// Si on n'a aucun titre (Spotify ne répond pas et pas de cache), page d'erreur 503
+	if len(titresJul) == 0 {
+		afficherErreur(reponse, http.StatusServiceUnavailable, "Erreur Spotify", "Spotify ne répond pas : réessaie dans un instant.")
+		return
+	}
+
 	// Chargement et affichage de l'accueil
 	page, erreur := template.ParseFiles("templates/index.gohtml")
 	if erreur != nil {

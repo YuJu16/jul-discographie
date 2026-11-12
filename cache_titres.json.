@@ -1,0 +1,524 @@
+[
+  {
+    "ID": "0meI1ECdjf0Cv5S7Gwwg3X",
+    "Nom": "Parasite",
+    "Artistes": [
+      "Jul"
+    ],
+    "DateSortie": "2026-05-15",
+    "DureeMs": 220546,
+    "Type": "album",
+    "Pochette": "https://i.scdn.co/image/ab67616d0000b2733b34412fb2ac7137dd255155",
+    "Album": "Oubliez-moi",
+    "LienSpotify": "https://open.spotify.com/track/0meI1ECdjf0Cv5S7Gwwg3X"
+  },
+  {
+    "ID": "1t558bX7wCdQ6upWuoz5u4",
+    "Nom": "Je pardonne tout",
+    "Artistes": [
+      "Jul"
+    ],
+    "DateSortie": "2026-05-15",
+    "DureeMs": 229666,
+    "Type": "album",
+    "Pochette": "https://i.scdn.co/image/ab67616d0000b2733b34412fb2ac7137dd255155",
+    "Album": "Oubliez-moi",
+    "LienSpotify": "https://open.spotify.com/track/1t558bX7wCdQ6upWuoz5u4"
+  },
+  {
+    "ID": "6NJ3wyvQLfE0phUmfd4V7k",
+    "Nom": "Je t'aime",
+    "Artistes": [
+      "Jul"
+    ],
+    "DateSortie": "2026-05-15",
+    "DureeMs": 200813,
+    "Type": "album",
+    "Pochette": "https://i.scdn.co/image/ab67616d0000b2733b34412fb2ac7137dd255155",
+    "Album": "Oubliez-moi",
+    "LienSpotify": "https://open.spotify.com/track/6NJ3wyvQLfE0phUmfd4V7k"
+  },
+  {
+    "ID": "4SchCavwDY9bLd4KjY1FJA",
+    "Nom": "Cantona",
+    "Artistes": [
+      "Jul"
+    ],
+    "DateSortie": "2026-05-15",
+    "DureeMs": 302506,
+    "Type": "album",
+    "Pochette": "https://i.scdn.co/image/ab67616d0000b2733b34412fb2ac7137dd255155",
+    "Album": "Oubliez-moi",
+    "LienSpotify": "https://open.spotify.com/track/4SchCavwDY9bLd4KjY1FJA"
+  },
+  {
+    "ID": "7IAjDvEDSrZuhUPraQOiAS",
+    "Nom": "BDR",
+    "Artistes": [
+      "Jul"
+    ],
+    "DateSortie": "2025-12-05",
+    "DureeMs": 352853,
+    "Type": "album",
+    "Pochette": "https://i.scdn.co/image/ab67616d0000b273edee5b2fceb447b8e2c482ff",
+    "Album": "TP sur TP",
+    "LienSpotify": "https://open.spotify.com/track/7IAjDvEDSrZuhUPraQOiAS"
+  },
+  {
+    "ID": "0Y1i7s5tQms66OeaZ0JwUz",
+    "Nom": "Nostalgique",
+    "Artistes": [
+      "Jul"
+    ],
+    "DateSortie": "2025-12-05",
+    "DureeMs": 207026,
+    "Type": "album",
+    "Pochette": "https://i.scdn.co/image/ab67616d0000b273edee5b2fceb447b8e2c482ff",
+    "Album": "TP sur TP",
+    "LienSpotify": "https://open.spotify.com/track/0Y1i7s5tQms66OeaZ0JwUz"
+  },
+  {
+    "ID": "5pEftKLE1dyuOLTewNQZeX",
+    "Nom": "TP sur TP",
+    "Artistes": [
+      "Jul"
+    ],
+    "DateSortie": "2025-12-05",
+    "DureeMs": 186000,
+    "Type": "album",
+    "Pochette": "https://i.scdn.co/image/ab67616d0000b273edee5b2fceb447b8e2c482ff",
+    "Album": "TP sur TP",
+    "LienSpotify": "https://open.spotify.com/track/5pEftKLE1dyuOLTewNQZeX"
+  },
+  {
+    "ID": "7b8AQNOTEXoI76Z3MtcCn3",
+    "Nom": "Tu tenenew",
+    "Artistes": [
+      "Jul"
+    ],
+    "DateSortie": "2025-12-05",
+    "DureeMs": 193080,
+    "Type": "album",
+    "Pochette": "https://i.scdn.co/image/ab67616d0000b273edee5b2fceb447b8e2c482ff",
+    "Album": "TP sur TP",
+    "LienSpotify": "https://open.spotify.com/track/7b8AQNOTEXoI76Z3MtcCn3"
+  },
+  {
+    "ID": "2Uun2RLIaAwV1KALUk0GBE",
+    "Nom": "On a pas peur",
+    "Artistes": [
+      "Jul"
+    ],
+    "DateSortie": "2025-09-26",
+    "DureeMs": 203822,
+    "Type": "album",
+    "Pochette": "https://i.scdn.co/image/ab67616d0000b273dc67dcc2381611970d419e07",
+    "Album": "Album gratuit, vol. 8",
+    "LienSpotify": "https://open.spotify.com/track/2Uun2RLIaAwV1KALUk0GBE"
+  },
+  {
+    "ID": "1gxPV2ypvbAjb2c8VOHoOs",
+    "Nom": "Les pauvres",
+    "Artistes": [
+      "Jul"
+    ],
+    "DateSortie": "2025-09-26",
+    "DureeMs": 190676,
+    "Type": "album",
+    "Pochette": "https://i.scdn.co/image/ab67616d0000b273dc67dcc2381611970d419e07",
+    "Album": "Album gratuit, vol. 8",
+    "LienSpotify": "https://open.spotify.com/track/1gxPV2ypvbAjb2c8VOHoOs"
+  },
+  {
+    "ID": "7kINgUflNXgCY6Jgf20AAN",
+    "Nom": "Faut que je mette les voiles",
+    "Artistes": [
+      "Jul"
+    ],
+    "DateSortie": "2025-09-26",
+    "DureeMs": 165235,
+    "Type": "album",
+    "Pochette": "https://i.scdn.co/image/ab67616d0000b273dc67dcc2381611970d419e07",
+    "Album": "Album gratuit, vol. 8",
+    "LienSpotify": "https://open.spotify.com/track/7kINgUflNXgCY6Jgf20AAN"
+  },
+  {
+    "ID": "2t7UC6G1K2hyCOkIyG0ybM",
+    "Nom": "Je suis sous les étoiles",
+    "Artistes": [
+      "Jul"
+    ],
+    "DateSortie": "2025-09-26",
+    "DureeMs": 205625,
+    "Type": "album",
+    "Pochette": "https://i.scdn.co/image/ab67616d0000b273dc67dcc2381611970d419e07",
+    "Album": "Album gratuit, vol. 8",
+    "LienSpotify": "https://open.spotify.com/track/2t7UC6G1K2hyCOkIyG0ybM"
+  },
+  {
+    "ID": "1z0Nx5YJNnLYUELRedhCKW",
+    "Nom": "Wouaw",
+    "Artistes": [
+      "Jul"
+    ],
+    "DateSortie": "2025-04-25",
+    "DureeMs": 166026,
+    "Type": "album",
+    "Pochette": "https://i.scdn.co/image/ab67616d0000b2737bc2e0b265c5034dbe7cf47e",
+    "Album": "D\u0026P à vie",
+    "LienSpotify": "https://open.spotify.com/track/1z0Nx5YJNnLYUELRedhCKW"
+  },
+  {
+    "ID": "1zHQtXfawabuBnPhUM5PT0",
+    "Nom": "Phénoménal",
+    "Artistes": [
+      "Jul"
+    ],
+    "DateSortie": "2025-04-25",
+    "DureeMs": 204973,
+    "Type": "album",
+    "Pochette": "https://i.scdn.co/image/ab67616d0000b2737bc2e0b265c5034dbe7cf47e",
+    "Album": "D\u0026P à vie",
+    "LienSpotify": "https://open.spotify.com/track/1zHQtXfawabuBnPhUM5PT0"
+  },
+  {
+    "ID": "4DaHzTtv6xgDs9HHcpxTWJ",
+    "Nom": "Sous l'eau",
+    "Artistes": [
+      "Jul"
+    ],
+    "DateSortie": "2025-04-25",
+    "DureeMs": 277520,
+    "Type": "album",
+    "Pochette": "https://i.scdn.co/image/ab67616d0000b2737bc2e0b265c5034dbe7cf47e",
+    "Album": "D\u0026P à vie",
+    "LienSpotify": "https://open.spotify.com/track/4DaHzTtv6xgDs9HHcpxTWJ"
+  },
+  {
+    "ID": "1fuqqXjTt7ooBTs4nwgBL3",
+    "Nom": "Cache ta Rolex",
+    "Artistes": [
+      "Jul"
+    ],
+    "DateSortie": "2025-04-25",
+    "DureeMs": 174506,
+    "Type": "album",
+    "Pochette": "https://i.scdn.co/image/ab67616d0000b2737bc2e0b265c5034dbe7cf47e",
+    "Album": "D\u0026P à vie",
+    "LienSpotify": "https://open.spotify.com/track/1fuqqXjTt7ooBTs4nwgBL3"
+  },
+  {
+    "ID": "1YaKohkxTv9PJyFfLBdPTQ",
+    "Nom": "Y'a plus de reconnaissance",
+    "Artistes": [
+      "Jul"
+    ],
+    "DateSortie": "2024-12-06",
+    "DureeMs": 268240,
+    "Type": "album",
+    "Pochette": "https://i.scdn.co/image/ab67616d0000b27384fcb225fcd2a8fb7d7b26c5",
+    "Album": "Inarrêtable",
+    "LienSpotify": "https://open.spotify.com/track/1YaKohkxTv9PJyFfLBdPTQ"
+  },
+  {
+    "ID": "3N5cjze4WLrSsj53vFQwjP",
+    "Nom": "Je m'habille pas en Versace",
+    "Artistes": [
+      "Jul"
+    ],
+    "DateSortie": "2024-12-06",
+    "DureeMs": 226946,
+    "Type": "album",
+    "Pochette": "https://i.scdn.co/image/ab67616d0000b27384fcb225fcd2a8fb7d7b26c5",
+    "Album": "Inarrêtable",
+    "LienSpotify": "https://open.spotify.com/track/3N5cjze4WLrSsj53vFQwjP"
+  },
+  {
+    "ID": "6uqUEyqPScFznadOkI7Nvm",
+    "Nom": "Un jour, je l'aurai",
+    "Artistes": [
+      "Jul"
+    ],
+    "DateSortie": "2024-12-06",
+    "DureeMs": 226760,
+    "Type": "album",
+    "Pochette": "https://i.scdn.co/image/ab67616d0000b27384fcb225fcd2a8fb7d7b26c5",
+    "Album": "Inarrêtable",
+    "LienSpotify": "https://open.spotify.com/track/6uqUEyqPScFznadOkI7Nvm"
+  },
+  {
+    "ID": "3WLhDVL6DvBEiM7WOThwJt",
+    "Nom": "Arrête tes manières",
+    "Artistes": [
+      "Jul"
+    ],
+    "DateSortie": "2024-12-06",
+    "DureeMs": 234106,
+    "Type": "album",
+    "Pochette": "https://i.scdn.co/image/ab67616d0000b27384fcb225fcd2a8fb7d7b26c5",
+    "Album": "Inarrêtable",
+    "LienSpotify": "https://open.spotify.com/track/3WLhDVL6DvBEiM7WOThwJt"
+  },
+  {
+    "ID": "6d29vrc4oW2eLnce53XFCK",
+    "Nom": "Mafiosa",
+    "Artistes": [
+      "Jul"
+    ],
+    "DateSortie": "2024-06-07",
+    "DureeMs": 308520,
+    "Type": "album",
+    "Pochette": "https://i.scdn.co/image/ab67616d0000b2739610f139a88a082130c731af",
+    "Album": "Mise à jour",
+    "LienSpotify": "https://open.spotify.com/track/6d29vrc4oW2eLnce53XFCK"
+  },
+  {
+    "ID": "2qvNjj0E3whohTikQRaRR4",
+    "Nom": "Me prends pas la tête",
+    "Artistes": [
+      "Jul"
+    ],
+    "DateSortie": "2024-06-07",
+    "DureeMs": 200360,
+    "Type": "album",
+    "Pochette": "https://i.scdn.co/image/ab67616d0000b2739610f139a88a082130c731af",
+    "Album": "Mise à jour",
+    "LienSpotify": "https://open.spotify.com/track/2qvNjj0E3whohTikQRaRR4"
+  },
+  {
+    "ID": "2pSmuV6Vt0KkJLoEfB2DxW",
+    "Nom": "Tié fou",
+    "Artistes": [
+      "Jul"
+    ],
+    "DateSortie": "2024-06-07",
+    "DureeMs": 217773,
+    "Type": "album",
+    "Pochette": "https://i.scdn.co/image/ab67616d0000b2739610f139a88a082130c731af",
+    "Album": "Mise à jour",
+    "LienSpotify": "https://open.spotify.com/track/2pSmuV6Vt0KkJLoEfB2DxW"
+  },
+  {
+    "ID": "0mTJlEcfgXegRfTbp8NUQL",
+    "Nom": "Je change pas",
+    "Artistes": [
+      "Jul"
+    ],
+    "DateSortie": "2024-06-07",
+    "DureeMs": 192880,
+    "Type": "album",
+    "Pochette": "https://i.scdn.co/image/ab67616d0000b2739610f139a88a082130c731af",
+    "Album": "Mise à jour",
+    "LienSpotify": "https://open.spotify.com/track/0mTJlEcfgXegRfTbp8NUQL"
+  },
+  {
+    "ID": "0rRaFBvow8WdGVERP8QXho",
+    "Nom": "Siège chauffant",
+    "Artistes": [
+      "Jul"
+    ],
+    "DateSortie": "2024-01-19",
+    "DureeMs": 213893,
+    "Type": "album",
+    "Pochette": "https://i.scdn.co/image/ab67616d0000b273735f5c18f82a88d3e65abd61",
+    "Album": "Décennie",
+    "LienSpotify": "https://open.spotify.com/track/0rRaFBvow8WdGVERP8QXho"
+  },
+  {
+    "ID": "0B65d9thur55bAQwq9cKnB",
+    "Nom": "D'or et de diamant",
+    "Artistes": [
+      "Jul"
+    ],
+    "DateSortie": "2024-01-19",
+    "DureeMs": 176386,
+    "Type": "album",
+    "Pochette": "https://i.scdn.co/image/ab67616d0000b273735f5c18f82a88d3e65abd61",
+    "Album": "Décennie",
+    "LienSpotify": "https://open.spotify.com/track/0B65d9thur55bAQwq9cKnB"
+  },
+  {
+    "ID": "16xS7ZnFOygZjMTB6YSkYP",
+    "Nom": "Je salue",
+    "Artistes": [
+      "Jul"
+    ],
+    "DateSortie": "2024-01-19",
+    "DureeMs": 222173,
+    "Type": "album",
+    "Pochette": "https://i.scdn.co/image/ab67616d0000b273735f5c18f82a88d3e65abd61",
+    "Album": "Décennie",
+    "LienSpotify": "https://open.spotify.com/track/16xS7ZnFOygZjMTB6YSkYP"
+  },
+  {
+    "ID": "5INBKLXLm7lFZdG9yJuDpa",
+    "Nom": "Avec tonton",
+    "Artistes": [
+      "Jul",
+      "Rim'K"
+    ],
+    "DateSortie": "2024-01-19",
+    "DureeMs": 218000,
+    "Type": "album",
+    "Pochette": "https://i.scdn.co/image/ab67616d0000b273735f5c18f82a88d3e65abd61",
+    "Album": "Décennie",
+    "LienSpotify": "https://open.spotify.com/track/5INBKLXLm7lFZdG9yJuDpa"
+  },
+  {
+    "ID": "46x6097gZein1HS9ORrOqC",
+    "Nom": "Le rappeur à 3 lettres",
+    "Artistes": [
+      "Jul"
+    ],
+    "DateSortie": "2023-12-08",
+    "DureeMs": 231546,
+    "Type": "album",
+    "Pochette": "https://i.scdn.co/image/ab67616d0000b2734967a6d7e47e5da99c4c2400",
+    "Album": "La route est longue",
+    "LienSpotify": "https://open.spotify.com/track/46x6097gZein1HS9ORrOqC"
+  },
+  {
+    "ID": "7953OK1zxdEkdJBv6XmJ9x",
+    "Nom": "La máquina",
+    "Artistes": [
+      "Jul"
+    ],
+    "DateSortie": "2023-12-08",
+    "DureeMs": 213866,
+    "Type": "album",
+    "Pochette": "https://i.scdn.co/image/ab67616d0000b2734967a6d7e47e5da99c4c2400",
+    "Album": "La route est longue",
+    "LienSpotify": "https://open.spotify.com/track/7953OK1zxdEkdJBv6XmJ9x"
+  },
+  {
+    "ID": "5j4l2IPtapiK2twUJih3eV",
+    "Nom": "Dans ma mama",
+    "Artistes": [
+      "Jul"
+    ],
+    "DateSortie": "2023-12-08",
+    "DureeMs": 179920,
+    "Type": "album",
+    "Pochette": "https://i.scdn.co/image/ab67616d0000b2734967a6d7e47e5da99c4c2400",
+    "Album": "La route est longue",
+    "LienSpotify": "https://open.spotify.com/track/5j4l2IPtapiK2twUJih3eV"
+  },
+  {
+    "ID": "5zDwN3tjp5OGK7SD6gXYbr",
+    "Nom": "La fusion",
+    "Artistes": [
+      "Jul",
+      "Alonzo"
+    ],
+    "DateSortie": "2023-12-08",
+    "DureeMs": 219680,
+    "Type": "album",
+    "Pochette": "https://i.scdn.co/image/ab67616d0000b2734967a6d7e47e5da99c4c2400",
+    "Album": "La route est longue",
+    "LienSpotify": "https://open.spotify.com/track/5zDwN3tjp5OGK7SD6gXYbr"
+  },
+  {
+    "ID": "6AZZfRVQ0fZBVZt6V60DBT",
+    "Nom": "La faille",
+    "Artistes": [
+      "Jul"
+    ],
+    "DateSortie": "2023-06-16",
+    "DureeMs": 291280,
+    "Type": "album",
+    "Pochette": "https://i.scdn.co/image/ab67616d0000b2735a5a16ac8fe5ac8514ef436a",
+    "Album": "C'est quand qu'il s'éteint ?",
+    "LienSpotify": "https://open.spotify.com/track/6AZZfRVQ0fZBVZt6V60DBT"
+  },
+  {
+    "ID": "5JwqiWLLvi0HGABtvw57eX",
+    "Nom": "Entraînement",
+    "Artistes": [
+      "Jul"
+    ],
+    "DateSortie": "2023-06-16",
+    "DureeMs": 251266,
+    "Type": "album",
+    "Pochette": "https://i.scdn.co/image/ab67616d0000b2735a5a16ac8fe5ac8514ef436a",
+    "Album": "C'est quand qu'il s'éteint ?",
+    "LienSpotify": "https://open.spotify.com/track/5JwqiWLLvi0HGABtvw57eX"
+  },
+  {
+    "ID": "0mVT4VH6fWPi2kyxTSRfvl",
+    "Nom": "Chagriné",
+    "Artistes": [
+      "Jul"
+    ],
+    "DateSortie": "2023-06-16",
+    "DureeMs": 167186,
+    "Type": "album",
+    "Pochette": "https://i.scdn.co/image/ab67616d0000b2735a5a16ac8fe5ac8514ef436a",
+    "Album": "C'est quand qu'il s'éteint ?",
+    "LienSpotify": "https://open.spotify.com/track/0mVT4VH6fWPi2kyxTSRfvl"
+  },
+  {
+    "ID": "1makGvbFZxULLqLdUe9M2L",
+    "Nom": "Alcantara",
+    "Artistes": [
+      "Jul"
+    ],
+    "DateSortie": "2023-06-16",
+    "DureeMs": 194040,
+    "Type": "album",
+    "Pochette": "https://i.scdn.co/image/ab67616d0000b2735a5a16ac8fe5ac8514ef436a",
+    "Album": "C'est quand qu'il s'éteint ?",
+    "LienSpotify": "https://open.spotify.com/track/1makGvbFZxULLqLdUe9M2L"
+  },
+  {
+    "ID": "4L2MfQnehV9uVCkf5mO00H",
+    "Nom": "Keyzer Söze",
+    "Artistes": [
+      "Jul"
+    ],
+    "DateSortie": "2023-03-20",
+    "DureeMs": 370880,
+    "Type": "album",
+    "Pochette": "https://i.scdn.co/image/ab67616d0000b273a7b73b7a19b6ec6f402e18ae",
+    "Album": "Album gratuit, vol. 7",
+    "LienSpotify": "https://open.spotify.com/track/4L2MfQnehV9uVCkf5mO00H"
+  },
+  {
+    "ID": "7tdZ19zTPlrK4Bm9Nlm4m0",
+    "Nom": "Bobo au corazon",
+    "Artistes": [
+      "Jul"
+    ],
+    "DateSortie": "2023-03-20",
+    "DureeMs": 207613,
+    "Type": "album",
+    "Pochette": "https://i.scdn.co/image/ab67616d0000b273a7b73b7a19b6ec6f402e18ae",
+    "Album": "Album gratuit, vol. 7",
+    "LienSpotify": "https://open.spotify.com/track/7tdZ19zTPlrK4Bm9Nlm4m0"
+  },
+  {
+    "ID": "7xwTi36mkJp8WHtaGuRp0x",
+    "Nom": "Tu me connais moi",
+    "Artistes": [
+      "Jul"
+    ],
+    "DateSortie": "2023-03-20",
+    "DureeMs": 167186,
+    "Type": "album",
+    "Pochette": "https://i.scdn.co/image/ab67616d0000b273a7b73b7a19b6ec6f402e18ae",
+    "Album": "Album gratuit, vol. 7",
+    "LienSpotify": "https://open.spotify.com/track/7xwTi36mkJp8WHtaGuRp0x"
+  },
+  {
+    "ID": "6bJxsGDkGEBS5fggr8QGCI",
+    "Nom": "Électrique",
+    "Artistes": [
+      "Jul"
+    ],
+    "DateSortie": "2023-03-20",
+    "DureeMs": 135600,
+    "Type": "album",
+    "Pochette": "https://i.scdn.co/image/ab67616d0000b273a7b73b7a19b6ec6f402e18ae",
+    "Album": "Album gratuit, vol. 7",
+    "LienSpotify": "https://open.spotify.com/track/6bJxsGDkGEBS5fggr8QGCI"
+  }
+]
